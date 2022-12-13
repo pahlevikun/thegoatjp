@@ -1,14 +1,14 @@
 APP_DIRECTORY="$(dirname "$0")/main"
 cd "$APP_DIRECTORY" || return
-fvm use 3.3.8 --force
+fvm use 3.3.9 --force
 echo ""
 echo "Do cleaning root project on app first..."
 echo ""
 fvm flutter clean
 
 ## declare array variables
-declare -a generator=()
-declare -a features=("main")
+declare -a generator=("assets" "language")
+declare -a features=("manifest" "main")
 
 echo ""
 echo "Build generator modules..."
@@ -38,6 +38,7 @@ echo "Re-generating assets..."
 echo ""
 
 cd "$(dirname "$0")/manifest" || return
+fvm use 3.3.9 --force
 fvm flutter pub run assets:generate
 fvm flutter pub run language:generate --source-dir=../resources/lang/ --output-dir=lib/src/string/
 

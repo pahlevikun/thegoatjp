@@ -1,8 +1,4 @@
-import 'dart:async';
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:thegoatjp/src/h.dart';
 
 class AppLocalizations {
   final Locale locale;
@@ -19,8 +15,8 @@ class AppLocalizations {
   Map<String, String> _localizedStrings = {};
 
   Future<bool> load() async {
-    // TODO: Put json file path here
-    const languageJson = "";
+    // TODO: Put json file path here if want to use dynamic based on locale
+    const languageJson = BuildConfig.DICTIONARY_LANG_IN;
     final jsonString = await rootBundle.loadString(languageJson);
     final Map<String, dynamic> jsonMap = json.decode(jsonString);
     _localizedStrings = jsonMap.map((key, value) {

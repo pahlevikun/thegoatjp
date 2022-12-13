@@ -1,0 +1,38 @@
+name: manifest
+description: Manifest module.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.17.0
+  lottie: ^1.3.0
+  local_auth: ^2.1.2
+
+builders:
+  assets:
+    path: ../generator/assets
+
+dev_dependencies:
+  assets:
+    path: ../generator/assets
+  language:
+    path: ../generator/language
+
+dependency_overrides:
+  path: '1.8.0'
+
+flutter:
+  uses-material-design: true
+  assets:
+    - ../resources/image/
+    - ../resources/lottie/
+    - ../resources/lang/en_en.json
+
+assets_generator:
+  output: "lib/src/assets_generated_manifest.dart"
+  custom_package: "manifest"

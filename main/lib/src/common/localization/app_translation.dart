@@ -1,9 +1,4 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:thegoatjp/src/h.dart';
 
 extension AppTranslationsExt on BuildContext {
   String getString(String? key) => AppTranslations.of(this).text(key);
@@ -20,8 +15,8 @@ class AppTranslations {
   }
 
   static Future<AppTranslations> load(Locale locale) async {
-    // TODO: Put json file path here
-    const languageJson = "";
+    // TODO: Put json file path here if want to use dynamic based on locale
+    const languageJson = BuildConfig.DICTIONARY_LANG_IN;
     final appTranslations = AppTranslations(locale);
     final jsonContent = await rootBundle.loadString("packages/$languageJson");
     _localisedValues = json.decode(jsonContent);

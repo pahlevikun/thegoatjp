@@ -194,4 +194,9 @@ app.*.map.json
 *.m.dart
 *.freezed.dart
 *.config.dart
+/.gradle/
+/local.properties
+/main/ios/Podfile.lock
+/.idea/jsonSchemas.xml
+
 *.mocks.dart

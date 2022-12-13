@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  manifest:
+    path: ../manifest
   # Core Essentials
   get_it: ^7.2.0
   injectable: ^1.5.3
@@ -88,7 +90,7 @@ flutter_native_splash:
   # background_image_dark must be specified.  color_dark and background_image_dark cannot both be
   # set.
   # color_dark: "#D92C2F"
-  # image_dark: ../resources/image/img_splash.png
+  image_dark: ../resources/image/img_splash_logo.png
   #branding_dark: assets/dart_dark.png
   android_12:
   # The image parameter sets the splash screen icon image.  If this parameter is not specified,
