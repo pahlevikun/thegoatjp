@@ -194,4 +194,3 @@ app.*.map.json
 *.m.dart
 *.freezed.dart
 *.config.dart
-*.mocks.dart
