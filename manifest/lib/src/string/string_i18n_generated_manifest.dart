@@ -27,7 +27,7 @@ class StringGeneratedManifest {
   }
   
   String get appName {
-    return Intl.message("The GOAT", name: 'appName');
+    return Intl.message("The GOAT JP", name: 'appName');
   }
 
 

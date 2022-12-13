@@ -13,7 +13,7 @@ class $en_en extends MessageLookupByLibrary {
   get localeName => 'en_en';
   
   final messages = {
-		"app_name" : MessageLookupByLibrary.simpleMessage("The GOAT"),
+		"app_name" : MessageLookupByLibrary.simpleMessage("The GOAT JP"),
 
   };
 }
