@@ -1,4 +1,6 @@
+import 'package:rxdart_ext/single.dart';
 import 'package:thegoatjp/src/data/source/remote/service/gutendex_api_service.dart';
+import 'package:thegoatjp/src/data/source/remote/service/model/response/book_list_response.dart';
 
 class RemoteGateway {
   final GutendexApiService _gutendexApiService;
@@ -6,4 +8,8 @@ class RemoteGateway {
   RemoteGateway(
     this._gutendexApiService,
   );
+
+  Single<BookListResponse> getBooks(num page) {
+    return Single.fromFuture(_gutendexApiService.getBooks(page: page));
+  }
 }
