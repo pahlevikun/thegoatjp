@@ -9,7 +9,13 @@ class RemoteGateway {
     this._gutendexApiService,
   );
 
-  Single<BookListResponse> getBooks(num page) {
-    return Single.fromFuture(_gutendexApiService.getBooks(page: page));
+  Single<BookListResponse> getBooks({
+    num? page,
+    String? keyword,
+    String? topic,
+  }) {
+    return Single.fromFuture(
+      _gutendexApiService.getBooks(page: page, topic: topic, keyword: keyword),
+    );
   }
 }

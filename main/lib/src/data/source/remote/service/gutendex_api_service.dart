@@ -12,5 +12,7 @@ abstract class GutendexApiService {
   @GET("books")
   Future<BookListResponse> getBooks({
     @Query("page") num? page,
+    @Query("keyword") String? keyword,
+    @Query("topic") String? topic,
   });
 }
