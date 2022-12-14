@@ -43,6 +43,7 @@ export 'package:thegoatjp/src/common/utils/pair.dart';
 export 'package:thegoatjp/src/common/utils/permission_helper.dart';
 export 'package:thegoatjp/src/common/utils/scope_function.dart';
 export 'package:thegoatjp/src/common/view/bounce_loading.dart';
+export 'package:thegoatjp/src/common/view/hideable_glow_behavior.dart';
 export 'package:thegoatjp/src/di/injector.dart';
 export 'package:thegoatjp/src/domain/contract/gutendex_repository_contract.dart';
 export 'package:thegoatjp/src/domain/entity/book_author_entity.dart';

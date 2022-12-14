@@ -1,5 +1,4 @@
 import 'package:loadmore/loadmore.dart';
-import 'package:thegoatjp/src/common/view/hideable_glow_behavior.dart';
 import 'package:thegoatjp/src/h.dart';
 
 class ItemListView extends StatefulWidget {
@@ -121,7 +120,7 @@ class ItemListViewState extends State<ItemListView> {
             itemCount: books.length,
             itemBuilder: (BuildContext context, int index) {
               final item = books[index];
-              return _buildItemCard(item, context);
+              return _buildItemCard(context, item);
             },
           ),
         ),
@@ -129,7 +128,10 @@ class ItemListViewState extends State<ItemListView> {
     );
   }
 
-  Card _buildItemCard(BookItemEntity item, BuildContext context) {
+  Card _buildItemCard(
+    BuildContext context,
+    BookItemEntity item,
+  ) {
     return Card(
       elevation: DimensionsManifest.UNIT_2,
       shadowColor: ColorManifest.DARK_GREY_COLOR.toColor(),

@@ -18,9 +18,6 @@ class BookDetailsPage extends StatefulWidget {
 class BookDetailsPageState extends State<BookDetailsPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => Injector.locator<BookDetailsBloc>(),
-      child: const BookDetailsView(),
-    );
+    return BookDetailsView(book: widget.book);
   }
 }
