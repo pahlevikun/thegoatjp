@@ -2,8 +2,8 @@
 
 import 'dart:async';
 
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'string_i18n_copies_all.dart';
 
@@ -28,6 +28,30 @@ class StringGeneratedManifest {
   
   String get appName {
     return Intl.message("The GOAT JP", name: 'appName');
+  }
+
+  String get errorViewGenericTitle {
+    return Intl.message("Opps, sorry something when wrong", name: 'errorViewGenericTitle');
+  }
+
+  String get errorViewGenericDescription {
+    return Intl.message("Seems like the page you are looking for got lost, don't worry, please try again later", name: 'errorViewGenericDescription');
+  }
+
+  String get errorViewConnectionTitle {
+    return Intl.message("Where's your internet connection?", name: 'errorViewConnectionTitle');
+  }
+
+  String get errorViewConnectionDescription {
+    return Intl.message("Please check your internet settings, seems like the internet is slow or unavailable", name: 'errorViewConnectionDescription');
+  }
+
+  String get errorViewEmptyTitle {
+    return Intl.message("I'm sorry, no data here", name: 'errorViewEmptyTitle');
+  }
+
+  String get errorViewEmptyDescription {
+    return Intl.message("Later it will be shown here", name: 'errorViewEmptyDescription');
   }
 
 

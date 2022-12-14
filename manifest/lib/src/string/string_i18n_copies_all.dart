@@ -14,6 +14,12 @@ class $en_en extends MessageLookupByLibrary {
   
   final messages = {
 		"app_name" : MessageLookupByLibrary.simpleMessage("The GOAT JP"),
+		"error_view_generic_title" : MessageLookupByLibrary.simpleMessage("Opps, sorry something when wrong"),
+		"error_view_generic_description" : MessageLookupByLibrary.simpleMessage("Seems like the page you are looking for got lost, don't worry, please try again later"),
+		"error_view_connection_title" : MessageLookupByLibrary.simpleMessage("Where's your internet connection?"),
+		"error_view_connection_description" : MessageLookupByLibrary.simpleMessage("Please check your internet settings, seems like the internet is slow or unavailable"),
+		"error_view_empty_title" : MessageLookupByLibrary.simpleMessage("I'm sorry, no data here"),
+		"error_view_empty_description" : MessageLookupByLibrary.simpleMessage("Later it will be shown here"),
 
   };
 }

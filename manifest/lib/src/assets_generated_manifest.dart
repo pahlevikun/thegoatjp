@@ -8,7 +8,9 @@ class AssetManifest {
 
 class LottieManifest {
   LottieManifest._();
-  static AssetLottie get lottieConfirmationSuccess => AssetLottie("../resources/lottie/lottie_confirmation_success.json", package: "manifest");
+  static AssetLottie get lottieEmptyError => AssetLottie("../resources/lottie/lottie_empty_error.json", package: "manifest");
+  static AssetLottie get lottieGenericError => AssetLottie("../resources/lottie/lottie_generic_error.json", package: "manifest");
+  static AssetLottie get lottieNetworkError => AssetLottie("../resources/lottie/lottie_network_error.json", package: "manifest");
 }
 
 class ImageManifest {

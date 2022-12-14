@@ -5,6 +5,12 @@ import 'dart:ui';
 class StringManifest {
   StringManifest._();
   static const String APP_NAME = "app_name";
+  static const String ERROR_VIEW_GENERIC_TITLE = "error_view_generic_title";
+  static const String ERROR_VIEW_GENERIC_DESCRIPTION = "error_view_generic_description";
+  static const String ERROR_VIEW_CONNECTION_TITLE = "error_view_connection_title";
+  static const String ERROR_VIEW_CONNECTION_DESCRIPTION = "error_view_connection_description";
+  static const String ERROR_VIEW_EMPTY_TITLE = "error_view_empty_title";
+  static const String ERROR_VIEW_EMPTY_DESCRIPTION = "error_view_empty_description";
 
 }
 
