@@ -3,7 +3,8 @@ import 'package:thegoatjp/src/domain/contract/usecase.dart';
 import 'package:thegoatjp/src/h.dart';
 
 @Singleton()
-class FetchBookListUseCase extends UseCase<num, Single<List<BookEntity>>> {
+class FetchBookListUseCase
+    extends UseCase<BookQuery, Single<BookEntity>> {
   final GutendexRepository _repository;
 
   FetchBookListUseCase(
@@ -11,7 +12,11 @@ class FetchBookListUseCase extends UseCase<num, Single<List<BookEntity>>> {
   );
 
   @override
-  Single<List<BookEntity>> execute(num param) {
-    return _repository.fetchBooks(page: param);
+  Single<BookEntity> execute(BookQuery param) {
+    return _repository.fetchBooks(
+      page: param.page,
+      keyword: param.keyword,
+      topic: param.topic,
+    );
   }
 }

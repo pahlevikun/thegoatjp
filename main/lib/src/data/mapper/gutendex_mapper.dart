@@ -3,13 +3,20 @@ import 'package:thegoatjp/src/h.dart';
 
 @Singleton()
 class GutendexMapper {
-  List<BookEntity> transformBookList(BookListResponse? response) {
+  BookEntity transformBookEntity(BookListResponse? response) {
+    return BookEntity(
+      books: transformBookList(response),
+      count: response?.count ?? 0,
+    );
+  }
+
+  List<BookItemEntity> transformBookList(BookListResponse? response) {
     return response?.results?.map((e) => transformBookItem(e)).toList() ??
         List.empty();
   }
 
-  BookEntity transformBookItem(BookResultData data) {
-    return BookEntity(
+  BookItemEntity transformBookItem(BookResultData data) {
+    return BookItemEntity(
       id: data.id.orZero(),
       title: data.title.orEmpty(),
       authors: data.authors?.map((e) => transformBookAuthor(e)).toList() ??
@@ -20,6 +27,7 @@ class GutendexMapper {
       copyright: data.copyright.orFalse(),
       mediaType: data.mediaType.orEmpty(),
       downloadCount: data.downloadCount.orZero(),
+      cover: data.format?.image ?? "",
     );
   }
 

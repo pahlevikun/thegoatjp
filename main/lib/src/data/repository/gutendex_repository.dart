@@ -13,13 +13,13 @@ class UserRepositoryImpl implements GutendexRepository {
   );
 
   @override
-  Single<List<BookEntity>> fetchBooks({
+  Single<BookEntity> fetchBooks({
     num? page,
     String? keyword,
     String? topic,
   }) {
     return _remoteGateway
         .getBooks(page: page, keyword: keyword, topic: topic)
-        .map((event) => _mapper.transformBookList(event));
+        .map((event) => _mapper.transformBookEntity(event));
   }
 }

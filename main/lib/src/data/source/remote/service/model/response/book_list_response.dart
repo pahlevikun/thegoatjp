@@ -46,6 +46,8 @@ class BookResultData {
   String? mediaType;
   @JsonKey(name: "download_count")
   num? downloadCount;
+  @JsonKey(name: "formats")
+  BookResultFormat? format;
 
   BookResultData({
     this.id,
@@ -57,6 +59,7 @@ class BookResultData {
     this.copyright,
     this.mediaType,
     this.downloadCount,
+    this.format,
   });
 
   factory BookResultData.fromJson(Map<String, dynamic>? json) =>
@@ -84,4 +87,19 @@ class BookResultAuthor {
       json == null ? BookResultAuthor() : _$BookResultAuthorFromJson(json);
 
   Map<String, dynamic> toJson() => _$BookResultAuthorToJson(this);
+}
+
+@JsonSerializable()
+class BookResultFormat {
+  @JsonKey(name: "image/jpeg")
+  String? image;
+
+  BookResultFormat({
+    this.image,
+  });
+
+  factory BookResultFormat.fromJson(Map<String, dynamic>? json) =>
+      json == null ? BookResultFormat() : _$BookResultFormatFromJson(json);
+
+  Map<String, dynamic> toJson() => _$BookResultFormatToJson(this);
 }
