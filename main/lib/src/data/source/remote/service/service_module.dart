@@ -113,22 +113,10 @@ abstract class ServiceModule {
   String provideBaseUrl() => BuildConfig.BASE_URL;
 
   @Singleton()
-  @Named("auth_url")
-  String provideAuthUrl() => BuildConfig.LOGIN_URL;
-
-  @Singleton()
-  @Named("refresh_url")
-  String provideRefreshUrl() => BuildConfig.REFRESH_URL;
-
-  @Singleton()
-  @Named("build_mode")
-  bool provideBuildMode() => BuildConfig.BUILD_STAGE_MODE && !kReleaseMode;
-
-  @Singleton()
   @Named("read_time_out")
-  int get readTimeOut => 60000;
+  int get readTimeOut => 15000;
 
   @Singleton()
   @Named("connect_time_out")
-  int get connectTimeOut => 60000;
+  int get connectTimeOut => 15000;
 }
