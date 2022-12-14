@@ -1,5 +1,8 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:alice/alice.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:thegoatjp/src/common/localization/app_translation_delegate.dart';
 import 'package:thegoatjp/src/common/localization/application.dart';
 import 'package:thegoatjp/src/h.dart';

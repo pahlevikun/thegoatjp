@@ -1,3 +1,4 @@
+import 'package:alice/alice.dart';
 import 'package:thegoatjp/src/h.dart';
 
 @module
