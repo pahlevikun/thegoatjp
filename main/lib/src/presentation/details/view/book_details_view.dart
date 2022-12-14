@@ -12,16 +12,16 @@ class BookDetailsViewState extends State<BookDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ItemListBloc, ItemListState>(
+    return BlocListener<BookDetailsBloc, BookDetailsState>(
       listener: (context, state) {},
-      child: BlocBuilder<ItemListBloc, ItemListState>(
+      child: BlocBuilder<BookDetailsBloc, BookDetailsState>(
         builder: (context, state) {
           return GoatScaffold(
             title: Text(
               context.getString(StringManifest.APP_NAME),
               style: context.headline(color: white().toHex()),
             ),
-            body: BlocBuilder<ItemListBloc, ItemListState>(
+            body: BlocBuilder<BookDetailsBloc, BookDetailsState>(
               builder: (context, state) {
                 return Container();
               },

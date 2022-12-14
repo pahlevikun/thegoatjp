@@ -18,7 +18,7 @@ class GoatScaffold extends StatelessWidget {
       extendBody: false,
       appBar: AppBar(
         elevation: 0,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         toolbarHeight: DimensionsManifest.PERCENT_10.h,
         backgroundColor: ColorManifest.LIGHT_PRIMARY_RED.toColor(),
         title: title,

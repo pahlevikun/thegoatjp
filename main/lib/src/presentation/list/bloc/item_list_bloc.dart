@@ -16,7 +16,7 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
   num _currentCount = 0;
   num _totalCount = 0;
   List<BookItemEntity> _books = [];
-  BookQuery _query = BookQuery(page: 0);
+  BookQuery _query = BookQuery(page: 1);
   bool _isFetching = false;
 
   _mapEventLoadMore(
@@ -28,7 +28,6 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
 
   void fetchNextPage() {
     if (!_isFetching && _currentCount <= _totalCount) {
-      _query = _query.copyWith(page: _query.page.orZero() + 1);
       _fetchBookListUseCase.execute(_query).doOnListen(() {
         _isFetching = true;
         if (_books.isEmpty) {
@@ -36,22 +35,27 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
         } else {
           emit(
             state.copyWith(
-              page: ItemListMarble.renderItems(books: _books),
+              page: ItemListMarble.renderItems(
+                  books: _books, isFinish: _isFetching),
             ),
           );
         }
       }).listen(
         (event) {
           _isFetching = false;
+          _query = _query.copyWith(page: _query.page.orZero() + 1);
           _totalCount = event.count;
           _currentCount += event.books.length;
           _books.addAll(event.books);
           if (_books.isEmpty) {
-            emit(state.copyWith(page: ItemListMarble.showGenericError()));
+            emit(state.copyWith(page: ItemListMarble.showEmptyError()));
           } else {
             emit(
               state.copyWith(
-                page: ItemListMarble.renderItems(books: _books),
+                page: ItemListMarble.renderItems(
+                  books: _books,
+                  isFinish: _isFetching,
+                ),
               ),
             );
           }
@@ -68,7 +72,10 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
           } else {
             emit(
               state.copyWith(
-                page: ItemListMarble.renderItems(books: _books),
+                page: ItemListMarble.renderItems(
+                  books: _books,
+                  isFinish: _isFetching,
+                ),
               ),
             );
           }

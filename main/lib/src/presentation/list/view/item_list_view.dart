@@ -25,12 +25,18 @@ class ItemListViewState extends State<ItemListView> {
         body: BlocBuilder<ItemListBloc, ItemListState>(
           builder: (context, state) {
             return state.page.when(
-              renderItems: (List<BookItemEntity>? books) => _buildContent(
+              renderItems: (List<BookItemEntity>? books, bool? isFinish) =>
+                  _buildContent(
                 context,
                 books ?? [],
+                isFinish.orFalse(),
               ),
-              showNetworkError: () => context.connectionError(),
-              showGenericError: () => context.genericError(),
+              showNetworkError: () => context.connectionError(onClick: () {
+                context.read<ItemListBloc>().add(ItemListEvent.loadMore());
+              }),
+              showGenericError: () => context.genericError(onClick: () {
+                context.read<ItemListBloc>().add(ItemListEvent.loadMore());
+              }),
               showEmptyError: () => context.emptyError(),
               showShimmer: () => _buildShimmer(context),
             );
@@ -47,7 +53,7 @@ class ItemListViewState extends State<ItemListView> {
           vertical: DimensionsManifest.SPACING_4x,
           horizontal: DimensionsManifest.SPACING_4x,
         ),
-        child: Row(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
@@ -55,45 +61,35 @@ class ItemListViewState extends State<ItemListView> {
                 borderRadius: standardBorderRadius(),
                 color: context.colorBackground(),
               ),
-              height: DimensionsManifest.PERCENT_15.h,
+              height: DimensionsManifest.PERCENT_25.h,
+              width: double.infinity,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: standardBorderRadius(),
+                color: context.colorBackground(),
+              ),
+              margin: EdgeInsets.only(top: DimensionsManifest.SPACING_4x),
+              height: DimensionsManifest.PERCENT_3_5.h,
+              width: double.infinity,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: standardBorderRadius(),
+                color: context.colorBackground(),
+              ),
+              margin: EdgeInsets.only(top: DimensionsManifest.SPACING_4x),
+              height: DimensionsManifest.PERCENT_2.h,
               width: DimensionsManifest.PERCENT_30.w,
             ),
-            SizedBox(
-              width: DimensionsManifest.SPACING_4x,
-            ),
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: standardBorderRadius(),
-                      color: context.colorBackground(),
-                    ),
-                    margin: EdgeInsets.only(top: DimensionsManifest.SPACING_x),
-                    height: DimensionsManifest.PERCENT_3_5.h,
-                    width: double.infinity,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: standardBorderRadius(),
-                      color: context.colorBackground(),
-                    ),
-                    margin: EdgeInsets.only(top: DimensionsManifest.SPACING_4x),
-                    height: DimensionsManifest.PERCENT_2.h,
-                    width: DimensionsManifest.PERCENT_30.w,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: standardBorderRadius(),
-                      color: context.colorBackground(),
-                    ),
-                    margin: EdgeInsets.only(top: DimensionsManifest.SPACING_2x),
-                    height: DimensionsManifest.PERCENT_2.h,
-                    width: DimensionsManifest.PERCENT_15.w,
-                  ),
-                ],
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: standardBorderRadius(),
+                color: context.colorBackground(),
               ),
+              margin: EdgeInsets.only(top: DimensionsManifest.SPACING_2x),
+              height: DimensionsManifest.PERCENT_2.h,
+              width: DimensionsManifest.PERCENT_15.w,
             ),
           ],
         ),
@@ -105,6 +101,7 @@ class ItemListViewState extends State<ItemListView> {
   Widget _buildContent(
     BuildContext context,
     List<BookItemEntity> books,
+    bool isFinish,
   ) {
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -114,6 +111,7 @@ class ItemListViewState extends State<ItemListView> {
         behavior: HideableGlowBehavior(),
         child: LoadMore(
           delegate: _ItemListLoadMore(context),
+          isFinish: isFinish,
           onLoadMore: () async {
             context.read<ItemListBloc>().add(const ItemListEvent.loadMore());
             return true;
@@ -147,7 +145,10 @@ class ItemListViewState extends State<ItemListView> {
         child: Material(
           color: white(),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Injector.locator<NavigationDispatcher>()
+                  .goToItemDetails(context, item);
+            },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -237,27 +238,6 @@ class _ItemListLoadMore extends LoadMoreDelegate {
     LoadMoreStatus status, {
     LoadMoreTextBuilder builder = DefaultLoadMoreTextBuilder.english,
   }) {
-    if (status == LoadMoreStatus.fail) {
-      return Container();
-    }
-    if (status == LoadMoreStatus.idle) {
-      return Center(
-        child: BounceLoading(
-          color: context.primaryColor(),
-        ),
-      );
-    }
-    if (status == LoadMoreStatus.loading) {
-      return Center(
-        child: BounceLoading(
-          color: context.primaryColor(),
-        ),
-      );
-    }
-    if (status == LoadMoreStatus.nomore) {
-      return Container();
-    }
-
     return Center(
       child: BounceLoading(
         color: context.primaryColor(),

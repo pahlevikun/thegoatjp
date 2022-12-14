@@ -6,6 +6,7 @@ class ErrorView extends StatelessWidget {
     Key? key,
     this.image,
     this.lottieAsset,
+    this.onClick,
     required this.title,
     required this.description,
   }) : super(key: key);
@@ -14,6 +15,7 @@ class ErrorView extends StatelessWidget {
   final LottieProvider? lottieAsset;
   final String title;
   final String description;
+  final Function? onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +65,26 @@ class ErrorView extends StatelessWidget {
                     fontSize: DimensionsManifest.FONT_B0.sp,
                   ),
             ),
+            if (onClick != null)
+              SizedBox(
+                height: DimensionsManifest.PERCENT_1.h,
+              ),
+            if (onClick != null)
+              SizedBox(
+                width: DimensionsManifest.PERCENT_30.w,
+                height: DimensionsManifest.PERCENT_9.w,
+                child: ElevatedButton(
+                  onPressed: () {
+                    onClick?.call();
+                  },
+                  style: context.stadiumEnableDisable(true),
+                  child: Text(
+                    "Retry",
+                    maxLines: 1,
+                    style: context.primaryCtaEnableDisable(true),
+                  ),
+                ),
+              ),
             SizedBox(
               height: DimensionsManifest.PERCENT_2_5.h,
             ),
