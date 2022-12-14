@@ -3,10 +3,10 @@ import 'package:thegoatjp/src/domain/contract/usecase.dart';
 import 'package:thegoatjp/src/h.dart';
 
 @Singleton()
-class GetAccountUseCase extends UseCase<num, Single<List<BookEntity>>> {
+class FetchBookListUseCase extends UseCase<num, Single<List<BookEntity>>> {
   final GutendexRepository _repository;
 
-  GetAccountUseCase(
+  FetchBookListUseCase(
     this._repository,
   );
 

@@ -6,7 +6,9 @@ export 'view/item_list_page.dart';
 @module
 abstract class ItemList {
   @factory
-  ItemListBloc provideItemListBloc() {
-    return ItemListBloc();
+  ItemListBloc provideItemListBloc(
+    FetchBookListUseCase fetchBookListUseCase,
+  ) {
+    return ItemListBloc(fetchBookListUseCase);
   }
 }

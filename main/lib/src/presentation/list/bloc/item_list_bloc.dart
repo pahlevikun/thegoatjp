@@ -5,9 +5,13 @@ export 'model/item_list_event.dart';
 export 'model/item_list_state.dart';
 
 class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
-  ItemListBloc() : super(const ItemListState()) {
+  ItemListBloc(
+      this._fetchBookListUseCase,
+  ) : super(const ItemListState()) {
     on<ItemListReady>(_mapEventReady);
   }
+
+  final FetchBookListUseCase _fetchBookListUseCase;
 
   _mapEventReady(
     ItemListReady event,
