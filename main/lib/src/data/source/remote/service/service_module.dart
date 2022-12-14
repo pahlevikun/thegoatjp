@@ -29,7 +29,6 @@ abstract class ServiceModule {
   }
 
   @Singleton()
-  @Named("dio_generic")
   Dio provideDio(
     BaseOptions baseOptions,
     @Named("build_mode") bool shouldShowLogger,

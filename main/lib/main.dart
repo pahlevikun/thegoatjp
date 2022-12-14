@@ -40,6 +40,7 @@ class ApplicationState extends State<Application> {
     super.initState();
     _onLocaleChange(defaultLocale);
     _languageAdapter.onLocaleChanged = _onLocaleChange;
+    _route.initRouter();
   }
 
   _onLocaleChange(Locale locale) {
@@ -50,11 +51,46 @@ class ApplicationState extends State<Application> {
 
   @override
   Widget build(BuildContext context) {
-    _route.initRouter();
     FlutterNativeSplash.remove();
     return AdaptiveTheme(
-      light: ThemeData(),
-      dark: ThemeData(),
+      light: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: MaterialColor(
+          ColorManifest.LIGHT_PRIMARY_RED.toHex(),
+          <int, Color>{
+            50: ColorManifest.LIGHT_10_RED.toColor(),
+            100: ColorManifest.LIGHT_20_RED.toColor(),
+            200: ColorManifest.LIGHT_30_RED.toColor(),
+            300: ColorManifest.LIGHT_40_RED.toColor(),
+            400: ColorManifest.LIGHT_50_RED.toColor(),
+            500: ColorManifest.LIGHT_60_RED.toColor(),
+            600: ColorManifest.LIGHT_70_RED.toColor(),
+            700: ColorManifest.LIGHT_80_RED.toColor(),
+            800: ColorManifest.LIGHT_90_RED.toColor(),
+            900: ColorManifest.LIGHT_100_RED.toColor(),
+          },
+        ),
+        backgroundColor: ColorManifest.LIGHT_BACKGROUND.toColor(),
+      ),
+      dark: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: MaterialColor(
+          ColorManifest.DARK_PRIMARY_RED.toHex(),
+          <int, Color>{
+            50: ColorManifest.DARK_10_RED.toColor(),
+            100: ColorManifest.DARK_20_RED.toColor(),
+            200: ColorManifest.DARK_30_RED.toColor(),
+            300: ColorManifest.DARK_40_RED.toColor(),
+            400: ColorManifest.DARK_50_RED.toColor(),
+            500: ColorManifest.DARK_60_RED.toColor(),
+            600: ColorManifest.DARK_70_RED.toColor(),
+            700: ColorManifest.DARK_80_RED.toColor(),
+            800: ColorManifest.DARK_90_RED.toColor(),
+            900: ColorManifest.DARK_100_RED.toColor(),
+          },
+        ),
+        backgroundColor: ColorManifest.DARK_BACKGROUND.toColor(),
+      ),
       initial: AdaptiveThemeMode.light,
       builder: (theme, darkTheme) {
         return DevicePreview(
@@ -73,7 +109,7 @@ class ApplicationState extends State<Application> {
             theme: theme,
             darkTheme: darkTheme,
             navigatorKey: _alice.getNavigatorKey(),
-            home: ItemListPage(),
+            home: IntermediaryPage(),
             onGenerateRoute: _route.router.generator,
           ),
         );

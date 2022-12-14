@@ -1,6 +1,6 @@
 import 'package:thegoatjp/src/h.dart';
 
-part 'item_list_event.freezed.dart';
+part 'intermediary_event.freezed.dart';
 
 @Freezed(
   copyWith: false,
@@ -18,6 +18,6 @@ part 'item_list_event.freezed.dart';
     maybeMap: false,
   ),
 )
-abstract class ItemListEvent with _$ItemListEvent {
-  const factory ItemListEvent.ready() = ItemListReady;
+abstract class IntermediaryEvent with _$IntermediaryEvent {
+  const factory IntermediaryEvent.routeNavigation() = IntermediaryRouteNavigation;
 }

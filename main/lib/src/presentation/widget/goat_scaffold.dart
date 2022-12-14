@@ -23,21 +23,6 @@ class GoatScaffold extends StatelessWidget {
         backgroundColor: ColorManifest.LIGHT_PRIMARY_RED.toColor(),
         title: title,
         bottomOpacity: 0.0,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[
-                "#A80202".toColor(),
-                "#A80202".toColor(),
-                "#A80202".toColor(),
-                "#A80202".toColor(),
-                ColorManifest.LIGHT_PRIMARY_RED.toColor(),
-              ],
-            ),
-          ),
-        ),
       ),
       body: body,
     );

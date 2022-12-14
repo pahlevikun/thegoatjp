@@ -35,7 +35,10 @@ class NavigationDispatcher {
     );
   }
 
-  Future<dynamic> goToItemList(BuildContext context) async {
-    return goToPath(context, AppRouteRegistry.itemList);
+  Future<dynamic> goToItemList(
+    BuildContext context, {
+    bool clearStack = false,
+  }) async {
+    return goToPath(context, AppRouteRegistry.itemList, clearStack: clearStack);
   }
 }

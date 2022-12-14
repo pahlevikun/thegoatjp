@@ -6,6 +6,11 @@ part 'item_list_state.freezed.dart';
   toStringOverride: false,
   fromJson: false,
   toJson: false,
+  map: FreezedMapOptions(
+    map: false,
+    mapOrNull: false,
+    maybeMap: false,
+  ),
 )
 abstract class ItemListMarble with _$ItemListMarble {
   const factory ItemListMarble.renderItems() = ItemListRenderItems;

@@ -7,6 +7,17 @@ class AppRouteRegistry {
 
   initRouter() {
     router.define(
+      intermediary,
+      handler: Handler(
+        handlerFunc: (
+          BuildContext? context,
+          Map<String, List<String>> parameters,
+        ) {
+          return const ItemListPage();
+        },
+      ),
+    );
+    router.define(
       itemList,
       handler: Handler(
         handlerFunc: (
@@ -19,5 +30,6 @@ class AppRouteRegistry {
     );
   }
 
+  static const intermediary = "/intermediary";
   static const itemList = "/list";
 }
