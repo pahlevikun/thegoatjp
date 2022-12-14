@@ -13,13 +13,18 @@ part 'item_list_state.freezed.dart';
   ),
 )
 abstract class ItemListMarble with _$ItemListMarble {
-  const factory ItemListMarble.renderItems() = ItemListRenderItems;
+  const factory ItemListMarble.renderItems({
+    List<BookItemEntity>? books,
+    bool? isLoadMore,
+  }) = ItemListRenderItems;
 
   const factory ItemListMarble.showShimmer() = ItemListShowShimmer;
 
   const factory ItemListMarble.showNetworkError() = ItemListShowNetworkError;
 
   const factory ItemListMarble.showGenericError() = ItemListShowGenericError;
+
+  const factory ItemListMarble.showEmptyError() = ItemListShowEmptyError;
 }
 
 class ItemListState extends Equatable {
