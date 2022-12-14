@@ -1,9 +1,12 @@
 {
-  "app_name": "The GOAT JP",
+  "app_name": "Gutendex",
   "error_view_generic_title": "Opps, sorry something when wrong",
   "error_view_generic_description": "Seems like the page you are looking for got lost, don't worry, please try again later",
   "error_view_connection_title": "Where's your internet connection?",
   "error_view_connection_description": "Please check your internet settings, seems like the internet is slow or unavailable",
   "error_view_empty_title": "I'm sorry, no data here",
-  "error_view_empty_description": "Later it will be shown here"
+  "error_view_empty_description": "Later it will be shown here",
+  "book_subject": "Subject",
+  "book_author": "Author:",
+  "book_language": "Language:"
 }

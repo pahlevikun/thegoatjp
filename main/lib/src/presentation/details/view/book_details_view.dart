@@ -40,7 +40,7 @@ class BookDetailsViewState extends State<BookDetailsView> {
                     right: DimensionsManifest.SPACING_4x,
                   ),
                   child: Text(
-                    "Subjects",
+                    context.getString(StringManifest.BOOK_SUBJECT),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
@@ -123,7 +123,7 @@ class BookDetailsViewState extends State<BookDetailsView> {
                     it.forEach((element) {
                       temp += "${element.name},";
                     });
-                    return "Author: ${temp.isNotEmpty ? temp.substring(0, temp.length - 1) : "-"}";
+                    return "${context.getString(StringManifest.BOOK_AUTHOR)} ${temp.isNotEmpty ? temp.substring(0, temp.length - 1) : "-"}";
                   }),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -147,7 +147,7 @@ class BookDetailsViewState extends State<BookDetailsView> {
                       it.forEach((element) {
                         temp += "$element,";
                       });
-                      return "Language: ${temp.isNotEmpty ? temp.substring(0, temp.length - 1).toUpperCase() : "-"}";
+                      return "${context.getString(StringManifest.BOOK_LANGUAGE)}: ${temp.isNotEmpty ? temp.substring(0, temp.length - 1).toUpperCase() : "-"}";
                     }),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

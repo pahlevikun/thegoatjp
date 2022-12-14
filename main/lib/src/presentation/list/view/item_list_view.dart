@@ -218,7 +218,7 @@ class ItemListViewState extends State<ItemListView> {
                       it.forEach((element) {
                         temp += "${element.name},";
                       });
-                      return "Author: ${temp.isNotEmpty ? temp.substring(0, temp.length - 1) : "-"}";
+                      return "${context.getString(StringManifest.BOOK_AUTHOR)} ${temp.isNotEmpty ? temp.substring(0, temp.length - 1) : "-"}";
                     }),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -242,7 +242,7 @@ class ItemListViewState extends State<ItemListView> {
                         it.forEach((element) {
                           temp += "$element,";
                         });
-                        return "Language: ${temp.isNotEmpty ? temp.substring(0, temp.length - 1).toUpperCase() : "-"}";
+                        return "${context.getString(StringManifest.BOOK_LANGUAGE)} ${temp.isNotEmpty ? temp.substring(0, temp.length - 1).toUpperCase() : "-"}";
                       }),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

@@ -27,7 +27,7 @@ class StringGeneratedManifest {
   }
   
   String get appName {
-    return Intl.message("The GOAT JP", name: 'appName');
+    return Intl.message("Gutendex", name: 'appName');
   }
 
   String get errorViewGenericTitle {
@@ -52,6 +52,18 @@ class StringGeneratedManifest {
 
   String get errorViewEmptyDescription {
     return Intl.message("Later it will be shown here", name: 'errorViewEmptyDescription');
+  }
+
+  String get bookSubject {
+    return Intl.message("Subject", name: 'bookSubject');
+  }
+
+  String get bookAuthor {
+    return Intl.message("Author", name: 'bookAuthor');
+  }
+
+  String get bookLanguage {
+    return Intl.message("Language", name: 'bookLanguage');
   }
 
 

@@ -6,7 +6,7 @@
         android:name=".Application"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="The GOAT JP"
+        android:label="Gutendex"
         tools:targetApi="donut">
         <activity
             android:name=".MainActivity"

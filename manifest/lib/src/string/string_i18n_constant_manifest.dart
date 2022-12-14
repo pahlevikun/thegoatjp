@@ -11,6 +11,9 @@ class StringManifest {
   static const String ERROR_VIEW_CONNECTION_DESCRIPTION = "error_view_connection_description";
   static const String ERROR_VIEW_EMPTY_TITLE = "error_view_empty_title";
   static const String ERROR_VIEW_EMPTY_DESCRIPTION = "error_view_empty_description";
+  static const String BOOK_SUBJECT = "book_subject";
+  static const String BOOK_AUTHOR = "book_author";
+  static const String BOOK_LANGUAGE = "book_language";
 
 }
 
