@@ -1,8 +1,6 @@
 import 'package:loadmore/loadmore.dart';
-import 'package:thegoatjp/src/common/localization/app_translation.dart';
 import 'package:thegoatjp/src/common/view/hideable_glow_behavior.dart';
 import 'package:thegoatjp/src/h.dart';
-import 'package:thegoatjp/src/presentation/widget/shimmer_network_image.dart';
 
 class ItemListView extends StatefulWidget {
   const ItemListView({Key? key}) : super(key: key);

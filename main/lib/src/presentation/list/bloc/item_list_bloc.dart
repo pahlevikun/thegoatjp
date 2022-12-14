@@ -1,9 +1,9 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:thegoatjp/src/h.dart';
 
-export 'item_list_bloc.dart';
-export 'model/item_list_event.dart';
-export 'model/item_list_state.dart';
+export 'package:thegoatjp/src/presentation/list/bloc/item_list_bloc.dart';
+export 'package:thegoatjp/src/presentation/list/bloc/model/item_list_event.dart';
+export 'package:thegoatjp/src/presentation/list/bloc/model/item_list_state.dart';
 
 class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
   ItemListBloc(

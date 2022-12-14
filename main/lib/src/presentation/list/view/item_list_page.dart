@@ -1,5 +1,4 @@
 import 'package:thegoatjp/src/h.dart';
-import 'package:thegoatjp/src/presentation/list/bloc/item_list_bloc.dart';
 
 export 'item_list_page.dart';
 export 'item_list_view.dart';

@@ -28,8 +28,23 @@ class AppRouteRegistry {
         },
       ),
     );
+    router.define(
+      itemDetails,
+      handler: Handler(
+        handlerFunc: (
+          BuildContext? context,
+          Map<String, List<String>> parameters,
+        ) {
+          final BookItemEntity book =
+              (context?.settings?.arguments as BookItemEntity?) ??
+                  BookItemEntity.empty();
+          return BookDetailsPage(book: book);
+        },
+      ),
+    );
   }
 
   static const intermediary = "/intermediary";
   static const itemList = "/list";
+  static const itemDetails = "/listDetails";
 }

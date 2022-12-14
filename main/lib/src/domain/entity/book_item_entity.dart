@@ -24,4 +24,17 @@ class BookItemEntity {
     required this.downloadCount,
     required this.cover,
   });
+
+  static BookItemEntity empty() => BookItemEntity(
+        id: 0,
+        title: "",
+        authors: [],
+        subjects: [],
+        bookshelves: [],
+        languages: [],
+        copyright: false,
+        mediaType: "",
+        downloadCount: 0,
+        cover: "",
+      );
 }

@@ -41,4 +41,16 @@ class NavigationDispatcher {
   }) async {
     return goToPath(context, AppRouteRegistry.itemList, clearStack: clearStack);
   }
+
+  Future<dynamic> goToItemDetails(
+    BuildContext context,
+    BookItemEntity book,
+  ) async {
+    return goToPath(
+      context,
+      AppRouteRegistry.itemDetails,
+      clearStack: false,
+      routeSettings: RouteSettings(arguments: book),
+    );
+  }
 }
