@@ -29,7 +29,7 @@ class SearchTextField extends StatelessWidget {
           onChanged: onTextChanged,
           onFieldSubmitted: onSubmitted,
           focusNode: focusNode,
-          autofocus: true,
+          autofocus: false,
           maxLines: 1,
           style: context.body1(),
           initialValue: keyword,

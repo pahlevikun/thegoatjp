@@ -1,5 +1,6 @@
 import 'package:loadmore/loadmore.dart';
 import 'package:thegoatjp/src/h.dart';
+import 'package:thegoatjp/src/presentation/widget/search_text_field.dart';
 
 class ItemListView extends StatefulWidget {
   const ItemListView({Key? key}) : super(key: key);
@@ -10,7 +11,6 @@ class ItemListView extends StatefulWidget {
 
 class ItemListViewState extends State<ItemListView> {
   final navigator = Injector.locator<NavigationDispatcher>();
-  final keyRating = GlobalKey<State>();
 
   @override
   Widget build(BuildContext context) {
@@ -110,24 +110,51 @@ class ItemListViewState extends State<ItemListView> {
       padding: const EdgeInsets.symmetric(
         horizontal: DimensionsManifest.SPACING_4x,
       ),
-      child: ScrollConfiguration(
-        behavior: HideableGlowBehavior(),
-        child: LoadMore(
-          delegate: _ItemListLoadMore(context),
-          isFinish: isFinish,
-          onLoadMore: () async {
-            context.read<ItemListBloc>().add(const ItemListEvent.loadMore());
-            return true;
-          },
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: books.length,
-            itemBuilder: (BuildContext context, int index) {
-              final item = books[index];
-              return _buildItemCard(context, item);
-            },
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: DimensionsManifest.SPACING_4x,
+            ),
+            child: SearchTextField(
+              isEnabled: true,
+              onTextChanged: (text) {},
+              onSubmitted: (text) {
+                context
+                    .read<ItemListBloc>()
+                    .add(ItemListEvent.search(keyword: text));
+              },
+            ),
           ),
-        ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: DimensionsManifest.SPACING_4x,
+              ),
+              child: ScrollConfiguration(
+                behavior: HideableGlowBehavior(),
+                child: LoadMore(
+                  delegate: _ItemListLoadMore(context),
+                  isFinish: isFinish,
+                  onLoadMore: () async {
+                    context
+                        .read<ItemListBloc>()
+                        .add(const ItemListEvent.loadMore());
+                    return true;
+                  },
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: books.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final item = books[index];
+                      return _buildItemCard(context, item);
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

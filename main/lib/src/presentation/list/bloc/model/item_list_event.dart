@@ -20,5 +20,6 @@ part 'item_list_event.freezed.dart';
 )
 abstract class ItemListEvent with _$ItemListEvent {
   const factory ItemListEvent.ready({String? subject}) = ItemListReady;
+  const factory ItemListEvent.search({required String keyword}) = ItemListSearch;
   const factory ItemListEvent.loadMore() = ItemListLoadMore;
 }

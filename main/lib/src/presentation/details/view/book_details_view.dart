@@ -92,7 +92,7 @@ class BookDetailsViewState extends State<BookDetailsView> {
             children: [
               ShimmerNetworkImage(
                 url: item.cover,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ),
               SizedBox(
                 height: DimensionsManifest.PERCENT_1.h,

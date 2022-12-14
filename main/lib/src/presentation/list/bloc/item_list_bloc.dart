@@ -11,6 +11,7 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
   ) : super(const ItemListState()) {
     on<ItemListLoadMore>(_mapEventLoadMore);
     on<ItemListReady>(_mapItemListReady);
+    on<ItemListSearch>(_mapItemListSearch);
   }
 
   final FetchBookListUseCase _fetchBookListUseCase;
@@ -20,6 +21,15 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
   BookQuery _query = BookQuery(page: 1);
   bool _isFetching = false;
   String? _customTitle;
+
+  _mapItemListSearch(
+    ItemListSearch event,
+    Emitter<ItemListState> emitter,
+  ) {
+    _query = _query.copyWith(page: 1, keyword: event.keyword);
+    _books.clear();
+    fetchNextPage();
+  }
 
   _mapItemListReady(
     ItemListReady event,
