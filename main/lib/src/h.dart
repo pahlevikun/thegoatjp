@@ -40,3 +40,5 @@ export 'package:thegoatjp/src/common/utils/permission_helper.dart';
 export 'package:thegoatjp/src/common/utils/scope_function.dart';
 export 'package:thegoatjp/src/di/injector.dart';
 export 'package:thegoatjp/src/domain/contract/gutendex_repository_contract.dart';
+export 'package:thegoatjp/src/presentation/list/item_list.dart';
+export 'package:thegoatjp/src/presentation/widget/goat_scaffold.dart';

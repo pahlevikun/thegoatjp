@@ -73,8 +73,7 @@ class ApplicationState extends State<Application> {
             theme: theme,
             darkTheme: darkTheme,
             navigatorKey: _alice.getNavigatorKey(),
-            // TODO: Update later
-            home: Container(),
+            home: ItemListPage(),
             onGenerateRoute: _route.router.generator,
           ),
         );
