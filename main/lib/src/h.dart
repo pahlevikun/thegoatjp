@@ -14,6 +14,7 @@ export 'package:flutter/rendering.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter/widgets.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
+export 'package:fluttericon/font_awesome_icons.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:get_it/get_it.dart';
 export 'package:injectable/injectable.dart';
