@@ -13,10 +13,8 @@ part 'item_list_state.freezed.dart';
   ),
 )
 abstract class ItemListMarble with _$ItemListMarble {
-  const factory ItemListMarble.renderItems({
-    List<BookItemEntity>? books,
-    bool? isLoadMore,
-  }) = ItemListRenderItems;
+  const factory ItemListMarble.renderItems({List<BookItemEntity>? books}) =
+      ItemListRenderItems;
 
   const factory ItemListMarble.showShimmer() = ItemListShowShimmer;
 
