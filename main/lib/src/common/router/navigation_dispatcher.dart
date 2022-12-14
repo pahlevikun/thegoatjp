@@ -35,5 +35,7 @@ class NavigationDispatcher {
     );
   }
 
-
+  Future<dynamic> goToItemList(BuildContext context) async {
+    return goToPath(context, AppRouteRegistry.itemList);
+  }
 }

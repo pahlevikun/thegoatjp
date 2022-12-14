@@ -7,7 +7,7 @@ echo ""
 fvm flutter clean
 
 ## declare array variables
-declare -a features=("manifest" "main")
+declare -a features=("main")
 
 echo ""
 echo "Build and generate files on feature modules..."

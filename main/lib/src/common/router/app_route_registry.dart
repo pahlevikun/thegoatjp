@@ -5,5 +5,19 @@ class AppRouteRegistry {
 
   AppRouteRegistry(this.router);
 
-  initRouter() {}
+  initRouter() {
+    router.define(
+      itemList,
+      handler: Handler(
+        handlerFunc: (
+          BuildContext? context,
+          Map<String, List<String>> parameters,
+        ) {
+          return const ItemListPage();
+        },
+      ),
+    );
+  }
+
+  static const itemList = "/list";
 }
