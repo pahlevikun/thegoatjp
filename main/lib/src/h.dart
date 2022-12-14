@@ -46,6 +46,8 @@ export 'package:thegoatjp/src/di/injector.dart';
 export 'package:thegoatjp/src/domain/contract/gutendex_repository_contract.dart';
 export 'package:thegoatjp/src/domain/entity/book_author_entity.dart';
 export 'package:thegoatjp/src/domain/entity/book_entity.dart';
+export 'package:thegoatjp/src/domain/entity/book_item_entity.dart';
+export 'package:thegoatjp/src/domain/entity/book_query.dart';
 export 'package:thegoatjp/src/domain/usecase/fetch_book_list_usecase.dart';
 export 'package:thegoatjp/src/presentation/intermediary/intermediary.dart';
 export 'package:thegoatjp/src/presentation/list/item_list.dart';

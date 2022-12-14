@@ -17,7 +17,7 @@ class ItemListPageState extends State<ItemListPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => Injector.locator<ItemListBloc>()..add(const ItemListEvent.ready()),
+      create: (context) => Injector.locator<ItemListBloc>()..add(const ItemListEvent.loadMore()),
       child: const ItemListView(),
     );
   }
