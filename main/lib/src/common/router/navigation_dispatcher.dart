@@ -37,9 +37,14 @@ class NavigationDispatcher {
 
   Future<dynamic> goToItemList(
     BuildContext context, {
+    String? subject,
     bool clearStack = false,
   }) async {
-    return goToPath(context, AppRouteRegistry.itemList, clearStack: clearStack);
+    return goToPath(
+      context,
+      "${AppRouteRegistry.itemList}?${AppRouteRegistry.querySubject}=${Uri.encodeQueryComponent(subject.orEmpty())}",
+      clearStack: clearStack,
+    );
   }
 
   Future<dynamic> goToItemDetails(

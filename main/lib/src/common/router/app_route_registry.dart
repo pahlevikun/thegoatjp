@@ -13,7 +13,7 @@ class AppRouteRegistry {
           BuildContext? context,
           Map<String, List<String>> parameters,
         ) {
-          return const ItemListPage();
+          return const IntermediaryPage();
         },
       ),
     );
@@ -24,7 +24,12 @@ class AppRouteRegistry {
           BuildContext? context,
           Map<String, List<String>> parameters,
         ) {
-          return const ItemListPage();
+          final String subject = Uri.decodeComponent(
+            parameters[querySubject]?.first ?? "",
+          );
+          return ItemListPage(
+            subject: subject,
+          );
         },
       ),
     );
@@ -47,4 +52,6 @@ class AppRouteRegistry {
   static const intermediary = "/intermediary";
   static const itemList = "/list";
   static const itemDetails = "/listDetails";
+
+  static const querySubject = "subject";
 }

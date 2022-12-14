@@ -10,6 +10,7 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
     this._fetchBookListUseCase,
   ) : super(const ItemListState()) {
     on<ItemListLoadMore>(_mapEventLoadMore);
+    on<ItemListReady>(_mapItemListReady);
   }
 
   final FetchBookListUseCase _fetchBookListUseCase;
@@ -18,6 +19,16 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
   List<BookItemEntity> _books = [];
   BookQuery _query = BookQuery(page: 1);
   bool _isFetching = false;
+  String? _customTitle;
+
+  _mapItemListReady(
+    ItemListReady event,
+    Emitter<ItemListState> emitter,
+  ) {
+    _customTitle = event.subject;
+    _query = _query.copyWith(topic: event.subject);
+    fetchNextPage();
+  }
 
   _mapEventLoadMore(
     ItemListLoadMore event,
@@ -31,12 +42,18 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
       _fetchBookListUseCase.execute(_query).doOnListen(() {
         _isFetching = true;
         if (_books.isEmpty) {
-          emit(state.copyWith(page: const ItemListMarble.showShimmer()));
+          emit(state.copyWith(
+            page: ItemListMarble.showShimmer(),
+            title: _customTitle,
+          ));
         } else {
           emit(
             state.copyWith(
               page: ItemListMarble.renderItems(
-                  books: _books, isFinish: _isFetching),
+                books: _books,
+                isFinish: _isFetching,
+              ),
+              title: _customTitle,
             ),
           );
         }
@@ -56,6 +73,7 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
                   books: _books,
                   isFinish: _isFetching,
                 ),
+                title: _customTitle,
               ),
             );
           }
@@ -65,9 +83,15 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
           if (_books.isEmpty) {
             final exception = NetworkException.getDioException(error);
             if (exception is NoInternetConnection) {
-              emit(state.copyWith(page: ItemListMarble.showNetworkError()));
+              emit(state.copyWith(
+                page: ItemListMarble.showNetworkError(),
+                title: _customTitle,
+              ));
             } else {
-              emit(state.copyWith(page: ItemListMarble.showGenericError()));
+              emit(state.copyWith(
+                page: ItemListMarble.showGenericError(),
+                title: _customTitle,
+              ));
             }
           } else {
             emit(
@@ -76,6 +100,7 @@ class ItemListBloc extends BaseGoatBloc<ItemListEvent, ItemListState> {
                   books: _books,
                   isFinish: _isFetching,
                 ),
+                title: _customTitle,
               ),
             );
           }

@@ -183,8 +183,11 @@ class BookDetailsViewState extends State<BookDetailsView> {
           color: white(),
           child: InkWell(
             onTap: () {
-              Injector.locator<NavigationDispatcher>()
-                  .goToItemList(context, clearStack: false);
+              navigator.goToItemList(
+                context,
+                clearStack: false,
+                subject: item,
+              );
             },
             child: Padding(
               padding: EdgeInsets.symmetric(

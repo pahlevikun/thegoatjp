@@ -16,15 +16,19 @@ class ItemListViewState extends State<ItemListView> {
   Widget build(BuildContext context) {
     return BlocListener<ItemListBloc, ItemListState>(
       listener: (context, state) {},
-      child: GoatScaffold(
-        title: Text(
-          context.getString(StringManifest.APP_NAME),
-          style: context.headline(color: white().toHex()),
-        ),
-        body: BlocBuilder<ItemListBloc, ItemListState>(
-          builder: (context, state) {
-            return state.page.when(
-              renderItems: (List<BookItemEntity>? books, bool? isFinish) =>
+      child: BlocBuilder<ItemListBloc, ItemListState>(
+        builder: (context, state) {
+          return GoatScaffold(
+            title: Text(
+              state.title?.takeIf((it) => it.isNotEmpty) ??
+                  context.getString(StringManifest.APP_NAME),
+              style: context.headline(color: white().toHex()),
+            ),
+            body: state.page.when(
+              renderItems: (
+                List<BookItemEntity>? books,
+                bool? isFinish,
+              ) =>
                   _buildContent(
                 context,
                 books ?? [],
@@ -38,9 +42,9 @@ class ItemListViewState extends State<ItemListView> {
               }),
               showEmptyError: () => context.emptyError(),
               showShimmer: () => _buildShimmer(context),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

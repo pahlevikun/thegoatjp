@@ -29,19 +29,23 @@ abstract class ItemListMarble with _$ItemListMarble {
 
 class ItemListState extends Equatable {
   final ItemListMarble page;
+  final String? title;
 
   const ItemListState({
     this.page = const ItemListMarble.showShimmer(),
+    this.title,
   });
 
   ItemListState copyWith({
     ItemListMarble? page,
+    String? title,
   }) {
     return ItemListState(
       page: page ?? this.page,
+      title: title ?? this.title,
     );
   }
 
   @override
-  List<Object> get props => [page];
+  List<Object> get props => [page, page];
 }
